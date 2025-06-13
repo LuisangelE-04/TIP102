@@ -3,7 +3,16 @@ Demand for your festival has exceeded expectations, so you're expanding the fest
 '''
 
 def identify_conflicts(venue1_schedule, venue2_schedule):
-  
+  '''
+  return dict(set(venue1_schedule.items()) & set(venue2_schedule.items()))
+  '''
+  conflicts = {}
+
+  for artist, time in venue1_schedule.items():
+    if artist in venue2_schedule and venue2_schedule[artist] == time:
+      conflicts[artist] = time
+
+  return conflicts
 
 venue1_schedule = {
     "Stromae": "9:00 PM",
